@@ -72,7 +72,7 @@ function insert_user_data(){
 			);
 
 		}elseif(isset($row_email->user_email) != $user->user_email ){
-			echo $insert_query = $wpdb->insert(
+			 $insert_query = $wpdb->insert(
 				$table_name,
 				array(
 					'date' => $modified_date,
