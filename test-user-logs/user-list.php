@@ -74,10 +74,11 @@ function insert_user_data(){
 			$wpdb->update( 
 				$table_name, 
 				array( 
-					'date' => $modified_date, 
+					'date' => $modified_date, 'ip_address' => $_SERVER['REMOTE_ADDR']
 				), 
+				
 				array( 
-				'user_email' => $user->user_email 
+				'user_email' => $user->user_email,
 				)
 			);
 		}elseif(isset($row_email->user_email) != $user->user_email ){
@@ -102,7 +103,7 @@ function user_logs(){
  global $wpdb;
  $table_name = $wpdb->prefix . "ra_user_info";
  ?>
- <div class="wrap">
+<div class="wrap">
 	<h3>User Activity Log</h3>
 	 <table class="wp-list-table widefat fixed striped posts">
 	 <thead>
@@ -129,7 +130,10 @@ function user_logs(){
 			   ?>
 			</td> 
 			<td>
-			   <div class="ra-avatar"><?php echo get_avatar( $row->user_email, 32 ); ?></div>  <?php echo $row->user_name; ?>
+			   <div class="ra-avatar">
+				<?php echo get_avatar( $row->user_email, 32 ); ?>
+			   </div>  
+			   <?php echo $row->user_name; ?>
 			</td>
 			<td>
 			   <?php echo $row->user_role; ?>
@@ -140,13 +144,13 @@ function user_logs(){
 		</tr>
 	<?php } ?>
 	 <tfoot>
-	 <tr>
-		<td>ID</td>
-		<td>Login Date</td>
-		<td>User Name</td>
-		<td>User Role</td>
-		<td>IP Address</td>
-	 </tr>
+		 <tr>
+			<td>ID</td>
+			<td>Login Date</td>
+			<td>User Name</td>
+			<td>User Role</td>
+			<td>IP Address</td>
+		 </tr>
 	 </tfoot>
 	</table>
 </div>
