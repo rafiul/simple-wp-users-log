@@ -5,7 +5,6 @@ if (!defined('ABSPATH')) {
 }
 define( 'RA_URL', plugins_url( '/', __FILE__ ) );
 
-add_action( 'wp_enqueue_scripts', 'ra_enqueue_style' );
 add_action( 'admin_init', 'ra_enqueue_style' );
 
 function ra_enqueue_style() {
